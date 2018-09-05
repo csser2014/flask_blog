@@ -1,0 +1,68 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div id="entry-content" role="main">
+	{% block article %}
+	{% block anchor %}
+	<div class="anchor clearfix">
+		<strong>所在位置：</strong>
+		<ul>
+			<li><a href="/">首页</a></li>
+			<li class="cur">正文</li>
+		</ul>
+	</div>
+	{% endblock %}
+		<article class="article">
+			<header class="header-content">
+				<h1>{{ post.title }}</h1>
+				<div class="infoWrap">
+						<span class="fa icon-admin"><a href="{{ url_for('main.user', name=post.author.name) }}">{{ post.author.name }}</a></span>
+					<span class="fa icon-category"><a href="{{ url_for('main.category', slug=post.category.slug) }}"> {{ post.category }} </a></span>
+					{% if post.tags %}
+						<span class="fa icon-tags">
+							{% for tag in post.tags %}
+							<a href="{{ url_for('main.tag', slug=tag.slug) }}" style="background:{{ tag.color }}">{{ tag.name }}</a>
+							{% endfor %}
+						</span>
+					{% endif %}
+				</div>
+			</header>
+			<section>
+				<div class="post-content">{{ post.content_html | safe }}</div>
+			</section>
+		</article>
+
+		<div class="post_nav">
+			{% if post.prev() %}
+			<p>【上一篇】<a href="{{ url_for('main.post', slug=post.prev().slug) }}">{{ post.prev().title }}</a></p>
+			{% else %}
+				<p>【上一篇】没有上一篇文章了</p>
+			{% endif %}
+			{% if post.next() %}
+			<p>【下一篇】<a href="{{ url_for('main.post', slug=post.next().slug) }}">{{ post.next().title }}</a></p>
+			{% else %}
+				<p>【下一篇】没有下一篇文章了</p>
+			{% endif %}
+		</div>
+
+		<div class="relateArticle">
+			<div class="relateTitle"> 相关文章 </div>
+			<ul class="relateContent">
+			{% if post.relativePost() %}
+				{% for pArticle in  post.relativePost() %}
+				<li class="fa icon-angle-left"><a href="{{ url_for('main.post', slug=pArticle.slug) }}">{{ pArticle.title }}</a></li>
+				{% endfor %}
+			{% else %}
+				<li>没有相关文章</li>
+			{% endif %}
+			</ul> 
+		</div> 
+		
+	{% endblock %}
+	{% block footer %}
+		{{ super() }}
+	{% endblock %}
+</div>
+{% endblock %}

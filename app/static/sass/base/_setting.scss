@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+// body font-family
+// $font-family:"Helvetica Neue", "Microsoft Yahei","微软雅黑","arial";
+$font-family:"Microsoft Yahei","微软雅黑","arial";
+
+// for IE8 opacity
+$filter : false !default;
+
+// for custom property
+$customProperty : true !default;
+
+// for FontAwesome
+$fa-font-path         :  "../fonts/fontawesome-webfont" !default;
+$fa-css-prefix        :  fa !default;
+$fa-font-name         :  FontAwesome !default;
+
+// for width height length font-size padding margin
+$sizeClass : (100 12 5) (200 14 10) (300 16 15) (400 18 20) (500 20 25) !default;
+
+// for text-decoration
+$textDecorationClass : (u underline) (n none) (l line-through) (o overline) !default;
+
+// for text-align
+$textAlignClass : (l left) (c center) (r right) (j justify) !default;
+
+// for display
+$displayClass : (n none) (b block) (i inline) (ib inline-block) (tb table) (tbc table-cell) (tbr table-row) !default;
+
+// for float
+$floatClass : (r right) (l left) (n none) !default;
+
+// for position
+$positionClass : (s static) (r relative) (a absolute) (f fixed) !default;
+
+// for prefixer
+$prefix-for-webkit    : true !default;
+$prefix-for-mozilla   : true !default;
+$prefix-for-microsoft : true !default;
+$prefix-for-opera     : true !default;
+$prefix-for-spec      : true !default;
+
+// for color for btn
+$btn-default-color  : #333 !default;
+$btn-default-bg     : #fff !default;
+$btn-default-border : #ccc !default;
+
+$brand-primary      : #428bca !default;
+$brand-success      : #5cb85c !default;
+$brand-warning      : #f0ad4e !default;
+$brand-danger       : #d9534f !default;
+$brand-info         : #5bc0de !default;
+
+// for fontsize
+$font-size-base : 14px !default;
+$font-size-h1   : 36px !default;
+$font-size-h2   : 30px !default;
+$font-size-h3   : 24px !default;
+$font-size-h4   : 18px !default;
+$font-size-h5   : 14px !default;
+$font-size-h6   : 12px !default;
+
+// for border-radius length
+$base-radius  : 5px !default;
+$small-radius : 3px !default;

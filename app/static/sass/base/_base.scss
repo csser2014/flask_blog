@@ -1,0 +1,99 @@
+@charset "utf-8";
+
+// according to Emment
+
+@if $customProperty {
+	@each $size in $sizeClass {
+		// set width
+		.w-#{nth($size, 1)} {
+			width:nth($size, 1) + px;
+		}
+		// set height
+		.h-#{nth($size, 1)} {
+			height:nth($size,1) + px;
+		}
+		// set font-size
+		.fz-#{nth($size, 2)} {
+		    font-size:nth($size, 2) + px;
+		}
+		// set margin-left
+		.ml-#{nth($size, 3)} {
+			margin-left:nth($size, 3) + px;
+		}
+		// set margin-right
+		.mr-#{nth($size, 3)} {
+			margin-right:nth($size, 3) + px;
+		}
+		// set margin-top
+		.mt-#{nth($size, 3)} {
+			margin-top:nth($size, 3) + px;
+		}
+		// set margin-bottom
+		.mb-#{nth($size, 3)} {
+			margin-bottom:nth($size, 3) + px;
+		}
+		// set padding-left
+		.pl-#{nth($size, 3)} {
+			padding-left:nth($size, 3) + px;
+		}
+		// set padding-right
+		.pr-#{nth($size, 3)} {
+			padding-right:nth($size, 3) + px;
+		}
+		// set padding-top
+		.pt-#{nth($size, 3)} {
+			padding-top:nth($size, 3) + px;
+		}
+		// set padding-bottom
+		.pb-#{nth($size, 3)} {
+			padding-bottom:nth($size, 3) + px;
+		}
+	}
+
+	// set text-decoration
+	@each $textDecoration in $textDecorationClass {
+		.td-#{nth($textDecoration, 1)} {
+			text-decoration:nth($textDecoration, 2);
+		}
+	}
+
+	// set text-align
+	@each $textAlign in $textAlignClass {
+		.ta-#{nth($textAlign, 1)} {
+			text-align:nth($textAlign, 2);
+		}
+	}
+
+	// set display
+	@each $display in $displayClass {
+		.d-#{nth($display, 1)} {
+			display:nth($display, 2);
+		}
+	}
+
+	// set float
+	@each $float in $floatClass {
+		.fl-#{nth($float, 1)} {
+			float:nth($float, 2);
+		}
+	}
+
+	// set position
+	@each $position in $positionClass {
+		.pos-#{nth($position, 1)} {
+			position:nth($position, 2);
+		}
+	}
+
+	.none{display:none;}
+	.block{display:block;}
+
+	// set font-weight
+	.fw-b {font-weight:bold;}
+	.fw-n{font-weight:normal;}
+
+	// set text-indent
+	.ti-2{text-indent:2em;}
+	.ti-9999{text-indent:-9999px;}
+
+}

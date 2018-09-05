@@ -1,0 +1,10 @@
+README.rst
+setup.cfg
+setup.py
+Flask_Disqus.egg-info/PKG-INFO
+Flask_Disqus.egg-info/SOURCES.txt
+Flask_Disqus.egg-info/dependency_links.txt
+Flask_Disqus.egg-info/requires.txt
+Flask_Disqus.egg-info/top_level.txt
+flask_disqus/__init__.py
+flask_disqus/flask_disqus.py

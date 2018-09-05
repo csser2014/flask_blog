@@ -1,0 +1,65 @@
+{% extends 'main/base.html' %}
+{% import '_page.html' as page %}
+
+{% block title %}我爱Gvim{% endblock %}
+
+{% set monthDict = {"01":"一", "02":"二", "03":"三", "04":"四", "05":"五", "06":"六", "07":"七", "08":"八", "09":"九", "10":"十", "11":"十一", "12":"十二"} %}
+
+{% block article %}
+{% block anchor %}
+<div class="anchor clearfix">
+	<strong>所在位置：</strong>
+	<ul>
+		<li><a href="/">首页</a></li>
+	{% if type == 'search' %}
+		<li>搜索 "<b>{{ query }}</b>" 关键字</li>
+	{% elif type == 'category' %}
+		<li class="cur">{{ category.name }}</li>
+	{% elif type == 'tag' %}
+		<li><a href="{{ url_for('main.tags') }}">标签</a></li>
+		<li class="cur">{{ tag.name }}</li>
+	{% elif type == 'user' %}
+		<li class="cur">{{ user.name }}</li>
+	{% endif %}
+	</ul>
+</div>
+{% endblock %}
+{% if posts %}
+	<div class="main">
+	{% for post in posts %}
+		<article class="article">
+			<header class="header-content">
+				<h1><a href="{{ url_for('main.post', slug=post.slug) }}">{{ post.title }}</a></h1>
+				<div class="infoWrap">
+					<span class="fa icon-admin"><a href="{{ url_for('main.user', name=post.author.name) }}">{{ post.author.name }}</a></span>
+					<span class="fa icon-category"><a href="{{ url_for('main.category', slug=post.category.slug) }}"> {{ post.category }} </a></span>
+					<time><span>{{ post.publish_date | datetimeformat("%d") }}</span><span>{{ monthDict[post.publish_date | datetimeformat("%m")] }}月</span></time>
+					{% if post.tags %}
+						<span class="fa icon-tags">
+							{% for tag in post.tags %}
+							<a href="{{ url_for('main.tag', slug=tag.slug) }}" style="background:{{ tag.color }}">{{ tag.name }}</a>
+							{% endfor %}
+						</span>
+					{% endif %}
+				</div>
+			</header>
+			<section>
+				<div class="post-content">{{ post.description }}</div>
+			</section>
+			<a href="{{ url_for('main.post', slug=post.slug) }}" class="continue">继续阅读>></a>
+		</article>
+	{% endfor %}
+	</div>
+	{% if type == 'category' %}
+		{{ page.pagination_widget(pagination, 'main.category', slug=category.slug) }}
+	{% elif type == 'tag' %}
+		{{ page.pagination_widget(pagination, 'main.tag', slug=tag.slug) }}
+	{% elif type == 'search' %}
+		{{ page.pagination_widget(pagination, 'main.search', query=query) }}
+	{% elif type == 'user' %}
+		{{ page.pagination_widget(pagination, 'main.user', name=user.name) }}
+	{% endif %}
+{% else %}
+	<p>no result</p>
+{% endif %}
+{% endblock %}

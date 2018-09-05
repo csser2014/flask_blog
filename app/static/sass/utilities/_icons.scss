@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+/* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+
+
+// ------------------------------------------
+// font-family
+// ------------------------------------------
+// set font-face
+// ------------------------------------------
+@mixin font-face($font-family, $file-path, $weight : normal, $style : normal ) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $weight;
+    font-style: $style;
+    src: url('#{$file-path}.eot'); 
+    src: url('#{$file-path}.eot?#iefix')           format('eot'), 
+         url('#{$file-path}.svg##{$font-family}')  format('svg'), 
+         url('#{$file-path}.woff')                 format('woff'), 
+         url('#{$file-path}.ttf')                  format('truetype');
+  }
+}
+
+@include font-face($fa-font-name, $fa-font-path);
+
+// set fa-css-prefix
+// ------------------------------------------
+.#{$fa-css-prefix} {
+    font-family:#{$fa-font-name}; 
+	font-style:normal;
+	font-weight:normal;
+	text-rendering: auto; 
+	line-height:1;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+}
+
+/* makes the font 33% larger relative to the icon container */
+.#{$fa-css-prefix}-lg {
+	font-size:(4em / 3);
+	line-height:(3em / 4);
+	vertical-align:-15%;
+}
+
+.#{$fa-css-prefix}-2x{font-size:2em;}
+.#{$fa-css-prefix}-3x{font-size:3em;}
+.#{$fa-css-prefix}-4x{font-size:4em;}
+.#{$fa-css-prefix}-5x{font-size:5em;}
+
+// set icon
+// ------------------------------------------
+@mixin icon($name, $allIcons : $allIconVariables){
+	&:before {
+		@each $iconName in $allIcons {
+			$index : index($iconName, fa-var-#{$name});
+			@if $index == 1 {
+				content : nth($iconName, 2);
+			}
+		}
+	}
+}

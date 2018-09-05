@@ -1,0 +1,307 @@
+@charset "utf-8";
+
+// set prefixer
+// ------------------------------------------
+@mixin prefixer($property, $value, $prefixes : webkit moz spec) {
+  @each $prefix in $prefixes {
+    @if $prefix == webkit and $prefix-for-webkit == true {
+      -webkit-#{$property} : $value;
+    } @else if $prefix == moz and $prefix-for-mozilla == true {
+      -moz-#{$property} : $value;
+    } @else if $prefix == ms and $prefix-for-microsoft == true {
+      -ms-#{$property} : $value;
+    } @else if $prefix == o and $prefix-for-opera == true {
+      -o-#{$property} : $value;
+    } @else if $prefix == spec and $prefix-for-spec == true {
+      #{$property} : $value;
+    }
+  }
+}
+
+// set border-radius
+// ------------------------------------------
+@mixin border-radius($value : $base-radius, $browse : webkit moz spec) {
+	@include prefixer(border-radius, $value, $browse);
+}
+
+// set box-shadow
+// ------------------------------------------
+@mixin box-shadow($shadow...) {
+	@include prefixer(box-shadow, $shadow, webkit moz spec);
+}
+
+// set box-sizing
+// ------------------------------------------
+@mixin box-sizing($type : border-box) {
+	@include prefixer(box-sizing, $type, webkit moz ms o spec);
+}
+
+// set text-shadow
+// ------------------------------------------
+@mixin text-shadow($shadow...) {
+	@include prefixer(text-shadow, $shadow, spec);
+}
+
+// set border-image
+// ------------------------------------------
+@mixin border-image($image) {
+	@include prefixer(border-image, $image, webkit moz o spec);
+}
+
+// ------------------------------------------
+// transform
+// ------------------------------------------
+// set backface-visibility
+@mixin backface-visibility($visibility : hidden){
+  @include prefixer(backface-visibility, $visibility, webkit spec);
+}
+
+// set transform
+// ------------------------------------------
+@mixin transform($property...) {
+	@include prefixer(transform, $property, webkit moz ms o spec);
+}
+
+// set rotate
+// ------------------------------------------
+@mixin rotate($angle : 0deg) {
+	@include prefixer(transform, rotate($angle), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin rotateX($angle : 0deg) {
+	@include prefixer(transform, rotateX($angle), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin rotateY($angle : 0deg) {
+	@include prefixer(transform, rotateY($angle), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin rotateZ($angle : 0deg) {
+	@include prefixer(transform, rotateZ($angle), webkit moz ms o spec);
+}
+
+//------------------------------------------
+@mixin rotate3d($angle...) {
+	@include prefixer(transform, rotate3d($angle), webkit moz ms o spec);
+}
+
+// set translate
+// ------------------------------------------
+@mixin translate($x, $y) {
+	@include prefixer(transform, translate($x, $y), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin translateX($x) {
+	@include prefixer(transform, translateX($x), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin translateY($y) {
+	@include prefixer(transform, translateY($y), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin translateZ($z) {
+	@include prefixer(transform, translateZ($z), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin translate3d($x, $y, $z) {
+	@include prefixer(transform, translate3d($x, $y, $z), webkit moz ms o spec);
+}
+
+// set scale 
+// ------------------------------------------
+@mixin scale($number...) {
+	@include prefixer(transform, scale($number), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin scaleX($number) {
+	@include prefixer(transform, scaleX($number), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin scaleY($number) {
+	@include prefixer(transform, scaleY($number), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin scaleZ($number) {
+	@include prefixer(transform, scaleZ($number), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin scale3d($number...) {
+	@include prefixer(transform, scale3d($number), webkit moz ms o spec);
+}
+
+// set skew
+// ------------------------------------------
+@mixin skew($x, $y) {
+	@include prefixer(transform, skew($x, $y), webkit moz ms o spec);
+	@include backface-visibility;
+}
+
+// ------------------------------------------
+@mixin skewX($x) {
+	@include prefixer(transform, skewX($x), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin skewY($y) {
+	@include prefixer(transform, skewY($y), webkit moz ms o spec);
+}
+
+// ------------------------------------------
+@mixin skewZ($z) {
+	@include prefixer(transform, skewZ($z), webkit moz ms o spec);
+}
+
+// set transform-origin
+//------------------------------------------
+@mixin transform-origin($name...) {
+	@include prefixer(transform-origin, $name, webkit moz ms o spec);
+}
+
+// ------------------------------------------
+// transition 
+// ------------------------------------------
+// set transition 
+@mixin transition($transition...) {
+	@include prefixer(transition, $transition, webkit moz o spec);
+}
+
+// set transition-delay
+// ------------------------------------------
+@mixin transition-delay($transition-delay...) {
+	@include prefixer(transition-delay, $transition-delay, webkit moz o spec);
+}
+
+// set transition-duration
+// ------------------------------------------
+@mixin transition-duration($transition-duration...) {
+	@include prefixer(transition-duration, $transition-duration, webkit moz o spec);
+}
+
+// ------------------------------------------
+// animation
+// ------------------------------------------
+// set animation
+@mixin animation($animations...) {
+	@include prefixer(animation, $animations, webkit moz o spec);
+}
+
+// set animation-name
+// ------------------------------------------
+@mixin animation-name($names...) {
+	@include prefixer(animation-name, $names, webkit moz o spec);
+}
+
+// set animation-delay
+// ------------------------------------------
+@mixin animation-delay($times...) {
+	@include prefixer(animation-delay, $times, webkit moz o spec);
+}
+
+// set animation-duration
+// ------------------------------------------
+@mixin animation-duration($times...) {
+	@include prefixer(animation-duration, $times, webkit moz o spec);
+}
+
+// set animation-direction
+// ------------------------------------------
+@mixin animation-direction($names...) {
+	@include prefixer(animation-direction, $names, webkit moz o spec);
+}
+
+// set animation-timing-function
+// ------------------------------------------
+@mixin animation-timing-function($names...) {
+	@include prefixer(animation-timing-function, $names, webkit moz o spec);
+}
+
+// set animation-iteration-count
+// ------------------------------------------
+@mixin animation-iteration-count($numbers...) {
+	@include prefixer(animation-iteration-count, $numbers, webkit moz o spec);
+}
+
+// set animation-fill-mode
+// ------------------------------------------
+@mixin animation-fill-mode ($names...) {
+	@include prefixer(animation-fill-mode, $names, webkit moz o spec);
+}
+
+// set animation-play-state
+// ------------------------------------------
+@mixin animation-play-state ($names...) {
+	@include prefixer(animation-play-state, $names, webkit moz o spec);
+}
+
+// set keyframes
+// ------------------------------------------
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@-o-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+// ------------------------------------------
+// columns
+// ------------------------------------------
+// set columns
+@mixin columns($name : auto) {
+	@include prefixer(columns, $name, webkit moz spec);
+}
+
+// set column-count
+// ------------------------------------------
+@mixin column-count($value : auto) {
+	@include prefixer(column-count, $value, webkit moz spec);
+}
+
+// set column-width
+// ------------------------------------------
+@mixin column-width($length : auto) {
+	@include prefixer(column-width, $length, webkit moz spec);
+}
+
+// set column-gap
+// ------------------------------------------
+@mixin column-gap($length : normal) {
+	@include prefixer(column-gap, $length, webkit moz spec);
+}
+
+// set column-rule
+// ------------------------------------------
+@mixin column-rule($column-rule) {
+	@include prefixer(column-rule, $column-rule, webkit moz spec);
+}
+
+// set background
+// ------------------------------------------
+@mixin linear-gradient($angle, $from-color, $to-color) {
+	background:-webkit-linear-gradient($angle, $from-color, $to-color);
+	background:   -moz-linear-gradient($angle, $from-color, $to-color);
+	background:    -ms-linear-gradient($angle, $from-color, $to-color);
+	background:     -o-linear-gradient($angle, $from-color, $to-color);
+	background:        linear-gradient($angle, $from-color, $to-color);
+}

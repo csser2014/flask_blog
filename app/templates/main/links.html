@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+{% import '_page.html' as page %}
+
+{% block title %}链接{% endblock %}
+
+{% block article %}
+{% block anchor %}
+<div class="anchor clearfix">
+	<strong>所在位置：</strong>
+	<ul>
+		<li><a href="/">首页</a></li>
+		<li class="cur">链接</li>
+	</ul>
+</div>
+{% endblock %}
+<div class="links">
+	{% if types %}
+		<div class="link-main">
+		{% for type in types %}
+			<div class="link-item">
+				<h2>{{ type.name }}</h2>
+				{% if type.links %}
+				<ul>
+					{% for link in type.links %}
+					<li><img src="{{ link.imgUrl }}" alt="{{ link.name }}" class="link-img"><a href="{{ link.url }}" target="_blank">{{ link.name }}</a></li>
+					{% endfor %}
+				</ul>
+				{% endif %}
+			</div>
+		{% endfor %}
+		</div>
+		{{ page.pagination_widget(pagination, 'main.links') }} 
+	{% else %}
+	<div class="no-result">
+		<p>暂时没有链接</p>
+	</div>
+	{% endif %}
+</div>
+{% endblock %}

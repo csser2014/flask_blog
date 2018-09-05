@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block title %}标签{% endblock %}
+
+{% block article %}
+{% block anchor %}
+<div class="anchor clearfix">
+	<strong>所在位置：</strong>
+	<ul>
+		<li><a href="{{ url_for('main.index') }}">首页</a></li>
+		<li class="cur">标签</li>
+	</ul>
+</div>
+{% endblock %}
+<div class="tags">
+	{% if tags %}
+	<div class="tags-box">
+		{% for tag in tags %}
+		<a href="#{{ tag.name }}">{{ tag.name }}<sup>{{ tag.posts.count() }}</sup></a>
+		{% endfor %}
+	</div>
+	<div class="tags-content">
+		{% for tag in tags %}
+		<h4><a name="{{ tag.name }}">{{ tag.name }}</a></h4>
+		<ul class="tags-item">
+			{% for post in tag.posts %}
+			<li>{{ post.publish_date | datetimeformat() }}<a href="{{ url_for('main.post', slug=post.slug) }}">{{ post.title }}</a></li>
+			{% endfor %}
+		</ul>
+		{% endfor %}
+	</div>
+	{% else %}
+		<div class="no-result">
+			<p>暂时没有标签</p>
+		</div>
+	{% endif %}
+</div>
+{% endblock %}

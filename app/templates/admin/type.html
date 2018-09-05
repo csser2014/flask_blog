@@ -1,0 +1,46 @@
+{% extends 'admin/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% import 'admin/_macros.html' as macros %}
+
+{% block title %}cms后台-角色{% endblock %}
+
+{% block page_content %}
+<ul class="nav nav-tabs actions-nav">
+	<li class="active"><a href="{{ url_for('admin.type') }}">列表</a></li>
+	<li><a href="{{ url_for('admin.add_type') }}">新增列表</a></li>
+</ul>
+<div class="table-responsive">
+	<table class="table table-striped table-bordered table-hover model-list">
+		<thead>
+			<tr>
+				<th class-"column-header">排序</th>
+				<th class-"column-header">栏目名称</th>
+				<th class-"column-header">自定义url</th>
+				<th class-"column-header">是否显示</th>
+				<th class-"column-header">描述</th>
+				<th class="col-md-1">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for type in types %}
+			<tr>
+				<td>{{ type.order }}</td>
+				<td>{{ type.name }}</td>
+				<td>{{ type.slug }}</td>
+				<td>{{ type.show }}</td>
+				<td>{{ type.description }}</td>
+				<td class="list-buttons-column">
+					<a href="{{ url_for('admin.edit_type', id=type.id) }}" class="icon"><span class="fa fa-pencil glyphicon glyphicon-pencil"></span></a>
+					<a href="{{ url_for('admin.del_type', id=type.id) }}" class="icon"><span class="fa fa-trash glyphicon glyphicon-trash"></span></a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% if pagination %}
+	<div class="pagination">
+		{{ macros.pagination_widget(pagination, 'admin.type') }}
+	</div>
+	{% endif %}
+</div>
+{% endblock %}

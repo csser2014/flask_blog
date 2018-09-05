@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+{% import '_page.html' as page %}
+
+{% block title %}我爱Gvim{% endblock %}
+
+{% block article %}
+{% block anchor %}
+<div class="anchor clearfix">
+	<strong>所在位置：</strong>
+	<ul>
+		<li><a href="{{ url_for('main.index') }}">首页</a></li>
+		<li class="cur">归档</li>
+	</ul>
+</div>
+{% endblock %}
+{% if posts %}
+	<div class="timeline">
+		<span class="timeline-count"></span>
+		<h4 class="tl-count">发表了<b>{{ count }}</b>篇文章</h4>
+		{% for group in posts | groupby('publish_date.year') | reverse %}
+			<h3 class="tl-title">{{ group.grouper }}</h3>
+			{% for post in group.list %}
+			<article class="tl-article">
+				<div class="tl-content">
+					<span class="date">{{ post.publish_date | datetimeformat('%m-%d') }}</span>
+					<a href="{{ url_for('main.post', slug=post.slug) }}" class="title">{{ post.title }}</a>
+				</div>
+			</article>
+			{% endfor %}
+		{% endfor %}
+	</div>
+	{{ page.pagination_widget(pagination, 'main.archive') }} 
+{% else %}
+	<div class="archive">
+		<div class="no-result">
+			<p>暂时没有归档文章</p>
+		</div>
+	</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,328 @@
+@charset "utf-8";
+
+// ------------------------------------------
+// set bounce
+// ------------------------------------------
+@mixin bounce($name : bounce) {
+	@include keyframes($name) {
+		0%, 20%, 50%, 80%, 100% {
+			@include translateY(0);
+		}
+		40% {
+			@include translateY(30px);
+		}
+		60% {
+			@include translateY(-15px);
+		}
+	}
+}
+
+// ------------------------------------------
+@mixin bounceIn($name : bounceIn) {
+	@include keyframes($name) {
+		0% {
+			@include opacity(0);
+			@include scale(0.3);
+		}
+		50% {
+			@include opacity(1);
+			@include scale(1.05);
+		}
+		70% {
+			@include scale(0.9);
+		}
+		100% {
+			@include scale(1);
+		}
+	}
+}
+
+// ------------------------------------------
+@mixin bounceInDown($name : bounceInDown) {
+	@include keyframes($name) {
+		0% {
+			@include opacity(0);
+			@include translateY(-100px);
+		}
+		60% {
+			@include opacity(1);
+			@include translateY(30px);
+		}
+		80% {
+			@include translateY(-3px);
+		}
+		100% {
+			@include translateY(0);
+		}
+	}
+}
+
+// ------------------------------------------
+@mixin bounceInUp($name : bounceInUp) {
+	@include keyframes($name) {
+		0% {
+			@include opacity(0);
+			@include translateY(100px);
+		}
+		60% {
+			@include opacity(1);
+			@include translateY(-30px);
+		}
+		80% {
+			@include translateY(3px);
+		}
+		100% {
+			@include translateY(0);
+		}
+	}
+}
+
+// ------------------------------------------
+@mixin bounceInLeft($name : bounceInLeft) {
+	@include keyframes($name) {
+		0% {
+			@include opacity(0);
+			@include translateX(-2000px);
+		}
+		60% {
+			@include opacity(1);
+			@include translateX(30px);
+		}
+		80% {
+			@include translateX(-3px);
+		}
+		100% {
+			@include translateX(0);
+		}
+	}
+}
+
+// ------------------------------------------
+@mixin bounceInRight($name : bounceInRight) {
+	@include keyframes($name) {
+		0% {
+			@include opacity(0);
+			@include translateX(2000px);
+		}
+		60% {
+			@include opacity(1);
+			@include translateX(-30px);
+		}
+		80% {
+			@include translateX(3px);
+		}
+		100% {
+			@include translateX(0);
+		}
+	}
+}
+
+// ------------------------------------------
+// set fadeIn
+// ------------------------------------------
+@mixin fadeIn($name : fadeIn) {
+	@include keyframes($name) {
+		0% {
+			@include opacity(0);
+		}
+		100% {
+			@include opacity(1);
+		}
+	}
+}
+
+// set fadeOut
+// ------------------------------------------
+@mixin fadeOut($name : fadeOut) {
+	@include keyframes($name) {
+		0% {
+			@include opacity(1);
+		}
+		100% {
+			@include opacity(0);
+		}
+	}
+}
+
+// set flash
+// ------------------------------------------
+@mixin flash($name : flash) {
+	@include keyframes($name) {
+		0%, 50%, 100% {
+			@include opacity(1);
+		}
+		25%, 75% {
+			@include opacity(0);
+		}
+
+	}
+}
+
+// set pulse 
+// ------------------------------------------
+@mixin pulse($name : pulse) {
+	@include keyframes($name) {
+		0% {
+			@include scale(1);
+		}
+		50% {
+			@include scale(1.1);
+		}
+		100% {
+			@include scale(1);
+		}
+	}
+}
+
+// set shake
+// ------------------------------------------
+@mixin shake($name : shake) {
+	@include keyframes($name) {
+		0%, 100% {
+			@include translateX(0);
+		}
+		10%, 30%, 50%, 70%, 90% {
+			@include translateX(-10px);
+		}
+		20%, 40%, 60%, 80% {
+			@include translateX(10px);
+		}
+	}
+}
+
+// set swing
+// ------------------------------------------
+@mixin swing($name : swing) {
+	@include keyframes($name)  {
+		20%, 40%, 60%, 80%, 100% {
+			@include transform-origin(top center);
+		}
+		20% {
+			@include rotate(15deg);
+		}
+		40% {
+			@include rotate(-10deg);
+		}
+		60% {
+			@include rotate(5deg);
+		}
+		80% {
+			@include rotate(-5deg);
+		}
+		100% {
+			@include rotate(0deg);
+		}
+	}
+}
+
+// set wiggle
+// ------------------------------------------
+@mixin wiggle($name : wiggle) {
+	@include keyframes($name) {
+		0% {
+			@include skewX(9deg);
+		}
+		10% {
+			@include skewX(-8deg);
+		}
+		20% {
+			@include skewX(7deg);
+		}
+		30% {
+			@include skewX(-6deg);
+		}
+		40% {
+			@include skewX(5deg);
+		}
+		50% {
+			@include skewX(-4deg);
+		}
+		60% {
+			@include skewX(3deg);
+		}
+		70% {
+			@include skewX(-2deg);
+		}
+		80% {
+			@include skewX(1deg);
+		}
+		90% {
+			@include skewX(0deg);
+		}
+		100% {
+			@include skewX(0deg);
+		}
+	}
+}
+
+// set wobble
+// ------------------------------------------
+@mixin wobble($name : wobble) {
+	@include keyframes($name) {
+		0% {
+			@include translateX(0%);
+		}
+		15% {
+			@include transform(translateX(-25%) rotate(-5deg));
+		}
+		30% {
+			@include transform(translateX(20%) rotate(3deg));
+		}
+		45% {
+			@include transform(translateX(-15%) rotate(-3deg));
+		}
+		60% {
+			@include transform(translateX(10%) rotate(2deg));
+		}
+		75% {
+			@include transform(translateX(-5%) rotate(-1deg));
+		}
+		100% {
+			@include translateX(0%);
+		}
+	}
+}
+
+// set tada
+// ------------------------------------------
+@mixin tada($name : tada) {
+	@include keyframes($name) {
+		0% {
+			@include scale(1);
+		}
+		10%, 20% {
+			@include transform(scale(0.9) rotate(-3deg));
+		}
+		30%, 50%, 70%, 90% {
+			@include transform(scale(1.1) rotate(3deg));
+		}
+		40%, 60%, 80% {
+			@include transform(scale(1.1) rotate(-3deg));
+		}
+		100% {
+			@include scale(0);
+		}
+	}
+}
+
+// set spin
+// ------------------------------------------
+@mixin spin($name : spin) {
+	@include keyframes($name) {
+		0% {
+			@include transform(rotate(0deg));
+		}
+		25% {
+			@include transform(rotate(90deg));
+		}
+		50% {
+			@include transform(rotate(180deg));
+		}
+		75% {
+			@include transform(rotate(270deg));
+		}
+		100% {
+			@include transform(rotate(360deg));
+		}
+	}
+}

@@ -1,0 +1,44 @@
+{% extends 'admin/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% import 'admin/_macros.html' as macros %}
+
+{% block title %}cms后台-角色{% endblock %}
+
+{% block page_content %}
+<ul class="nav nav-tabs actions-nav">
+	<li class="active"><a href="{{ url_for('admin.photo') }}">列表</a></li>
+	<li><a href="{{ url_for('admin.add_photo') }}">新增列表</a></li>
+</ul>
+<div class="table-responsive">
+	<table class="table table-striped table-bordered table-hover model-list">
+		<thead>
+			<tr>
+				<th class-"column-header">图片名称</th>
+				<th class-"column-header">图片地址</th>
+				<th class-"column-header">图片描述</th>
+				<th class-"column-header">所属类别</th>
+				<th class="col-md-1">操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for photo in photos %}
+			<tr>
+				<td>{{ photo.imgName }}</td>
+				<td><img src="{{ photo.imgUrl }}" alt="" width="100" height="100" /></td>
+				<td>{{ photo.imgDescript }}</td>
+				<td>{{ photo.type.name }}</td>
+				<td class="list-buttons-column">
+					<a href="javascript:void(0);" class="icon"><span class="fa fa-pencil glyphicon glyphicon-pencil"></span></a>
+					<a href="{{ url_for('admin.del_photo', id=photo.id) }}" class="icon"><span class="fa fa-trash glyphicon glyphicon-trash"></span></a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% if pagination %}
+	<div class="pagination">
+		{{ macros.pagination_widget(pagination, 'admin.post') }}
+	</div>
+	{% endif %}
+</div>
+{% endblock %}
