@@ -34,7 +34,7 @@ idna==2.6
 ipaddress==1.0.18
 itsdangerous==0.24
 jieba==0.39
-Jinja2==2.9.6
+Jinja2==2.11.3
 kombu==4.1.0
 Mako==1.0.7
 Markdown==2.6.9
