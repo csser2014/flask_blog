@@ -43,7 +43,7 @@ meld3==1.0.2
 misaka==2.1.0
 MySQL-python==1.2.5
 olefile==0.44
-paramiko==2.3.1
+paramiko==2.10.1
 Pillow==4.3.0
 pyasn1==0.3.7
 pycparser==2.18
